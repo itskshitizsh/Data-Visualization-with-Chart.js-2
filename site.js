@@ -6,20 +6,17 @@
         const revenues2020 = apiData.map(o => o.revenue2020);
         const revenues2019 = apiData.map(o => o.revenue2019);
         const revenues2018 = apiData.map(o => o.revenue2018);
-        const average = apiData.map(o => (o.revenue2018 + o.revenue2019 + o.revenue2020)/3)
         const colorPool = ["purple", "red", "green", "blue", "orange"]
+        
+        const refbutton = document.getElementById('refreshButton');
+        refbutton.addEventListener("click", refreshFun);
+        
         const ctx = document.getElementById('chart');
-        new Chart(ctx, {
+        const chart = new Chart(ctx, {
             type: 'bar',
             data: {
                 labels: branches,
                 datasets: [
-                    {
-                        label: "Average",
-                        data: average,
-                        borderColor: 'green',
-                        type: 'line' // override chart type for this dataset
-                    },
                     {
                         backgroundColor: "red",
                         label: "Revenues - 2018",
@@ -37,6 +34,12 @@
                 ]
             }
         });
+
+        function refreshFun() {
+            chart.data.datasets[2].data[2] = 50000;
+            chart.update();
+            console.log("Chart is updated!");
+        }
 
         // An async function enables the use of await in the function
         async function getApiData() {
