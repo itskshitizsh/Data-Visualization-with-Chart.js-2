@@ -8,3 +8,4 @@ https://app.pluralsight.com/learner/user/courses/v2/a707af03-75bc-4760-a9db-9f16
 
 ## Course details can be find in below link
 https://app.pluralsight.com/library/courses/build-data-visualization-chart-js/table-of-contents
+> Course teaches basics of using https://www.chartjs.org/docs/latest/
