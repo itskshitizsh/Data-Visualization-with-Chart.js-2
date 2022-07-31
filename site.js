@@ -6,14 +6,20 @@
         const revenues2020 = apiData.map(o => o.revenue2020);
         const revenues2019 = apiData.map(o => o.revenue2019);
         const revenues2018 = apiData.map(o => o.revenue2018);
+        const average = apiData.map(o => (o.revenue2018 + o.revenue2019 + o.revenue2020)/3)
         const colorPool = ["purple", "red", "green", "blue", "orange"]
         const ctx = document.getElementById('chart');
         new Chart(ctx, {
-            // type: 'polarArea', // SCALE SHOWS THE VALUE
-            type: 'radar', // Each segment is the whole dataset
+            type: 'bar',
             data: {
                 labels: branches,
                 datasets: [
+                    {
+                        label: "Average",
+                        data: average,
+                        borderColor: 'green',
+                        type: 'line' // override chart type for this dataset
+                    },
                     {
                         backgroundColor: "red",
                         label: "Revenues - 2018",
@@ -24,7 +30,7 @@
                         data: revenues2019
                     },
                     {
-                        backgroundColor: "green",
+                        backgroundColor: "blue",
                         label: "Revenues - 2020",
                         data: revenues2020
                     }
