@@ -6,26 +6,29 @@
         const revenues2020 = apiData.map(o => o.revenue2020);
         const revenues2019 = apiData.map(o => o.revenue2019);
         const revenues2018 = apiData.map(o => o.revenue2018);
-        
+        const colorPool = ["purple", "red", "green", "blue", "orange"]
         const ctx = document.getElementById('chart');
         new Chart(ctx, {
-            type: 'horizontalBar', // 'bar',
+            type: 'doughnut',//'pie',
             data: {
                 labels: branches,
+                // Each dataset, which is the revenue year, is represented by a concentric circle in the pie.
                 datasets: [
                     {
-                        backgroundColor: "green",
+                        // inner circle
+                        backgroundColor: colorPool,
                         label: "Revenues - 2018",
                         data: revenues2018
                     },                    {
-                        backgroundColor: "red",
+                        backgroundColor: colorPool,
                         label: "Revenues - 2019",
                         data: revenues2019
                     },
                     {
-                        backgroundColor: "purple",
+                        // outer circle
+                        backgroundColor: colorPool,
                         label: "Revenues - 2020",
-                        data: revenues2019
+                        data: revenues2020
                     }
                 ]
             }
