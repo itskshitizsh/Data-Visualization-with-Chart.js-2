@@ -1,6 +1,13 @@
 // Self executing function to avoid pollution of JavaScript's global namespace
 (
     async () => {
+
+        Chart.defaults.global.defaultColor = "rgba(255,0,0,1)";
+        //  Configuration setting as global
+        //  Chart.defaults.scale.ticks.beginAtZero = true;
+        // Chart.defaults.global.legend.display = false;
+        Chart.defaults.global.animation.duration = 2000;
+
         var apiData = await getApiData();
         const branches = apiData.map(o => o.branch); // Array of the values based on the property specified. 
         const revenues2020 = apiData.map(o => o.revenue2020);
@@ -12,6 +19,7 @@
         refbutton.addEventListener("click", refreshFun);
         
         const ctx = document.getElementById('chart');
+        // https://www.chartjs.org/docs/latest/charts
         const chart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -33,6 +41,23 @@
                         data: revenues2020
                     }
                 ]
+            },
+            // Configuration for a chart
+            // https://www.chartjs.org/docs/latest/configuration/
+            options: {
+                legend: {
+                    display: false
+                },
+                animation: {
+                    duration: 5000 // 5 sec. And to disable animation, we can set this field to 0
+                },
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
             }
         });
 
