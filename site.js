@@ -1,11 +1,26 @@
 // Self executing function to avoid pollution of JavaScript's global namespace
 (
     () => {
-        const ctx = document.getElementById('chart').getContext('2d');
-        ctx.moveTo(0,0); // Upper left corner
-        ctx.lineTo(200,100); 
-        ctx.stroke(); // Move hand to corrdinate
+        const ctx = document.getElementById('chart');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
 
+                labels: ["Seattle", "Portland", "Monterey", "San Francisco", "San Diego"],
+                datasets: [
+                    {
+                        backgroundColor: "red",
+                        label: "Revenues per branch",
+                        data: [47100, 67742, 50320, 67993, 50532]
+                    },
+                    {
+                        backgroundColor: "purple",
+                        label: "Revenues per branch",
+                        data: [43223, 64332, 53322, 67743, 51132]
+                    }
+                ]
+            }
+        });
     }
 )(); 
 
