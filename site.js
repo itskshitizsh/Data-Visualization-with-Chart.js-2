@@ -16,18 +16,19 @@
             type: 'bar',
             data: {
                 labels: branches,
-                datasets: [
+                datasets: [ // Added pattern for color blind people. 
+                // For checking all available configurations check https://github.com/ashiguruma/patternomaly
                     {
-                        backgroundColor: "red",
+                        backgroundColor: pattern.draw("square","rgba(255,0,0,1)"),
                         label: "Revenues - 2018",
                         data: revenues2018
                     },                    {
-                        backgroundColor: "purple",
+                        backgroundColor: pattern.draw("circle","purple"),
                         label: "Revenues - 2019",
                         data: revenues2019
                     },
                     {
-                        backgroundColor: "blue",
+                        backgroundColor: pattern.draw("diamond","blue"),
                         label: "Revenues - 2020",
                         data: revenues2020
                     }
