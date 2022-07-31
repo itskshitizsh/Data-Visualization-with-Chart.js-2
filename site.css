@@ -1,0 +1,15 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.chartContainer {
+    position: relative;
+    width: 80vw;
+    height: 40vw; /* 40 view port height */
+}
+
+.logo span {
+    font-size: 12px;
+    margin-top: 60px;
+    margin-left: 20px;
+    display: inline-block;
+}

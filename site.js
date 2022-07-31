@@ -49,6 +49,9 @@
             // Configuration for a chart
             // https://www.chartjs.org/docs/latest/configuration/
             options: {
+                // responsive: false,
+                maintainAspectRatio: false,
+                onResize: function(chart, size){console.log(chart, size)},
                 legend: {
                     display: false,
                     onclick: function() {
