@@ -27,7 +27,11 @@
                 datasets: [ // Added pattern for color blind people. 
                 // For checking all available configurations check https://github.com/ashiguruma/patternomaly
                     {
-                        backgroundColor: pattern.draw("square","rgba(255,0,0,1)"),
+                        backgroundColor: function(context) {
+                            let index = context.dataIndex;
+                            let value = context.dataset.data[index];
+                            return value < 20000 ? "red" : "green";
+                        },
                         label: "Revenues - 2018",
                         data: revenues2018
                     },                    {
@@ -46,10 +50,16 @@
             // https://www.chartjs.org/docs/latest/configuration/
             options: {
                 legend: {
-                    display: false
+                    display: false,
+                    onclick: function() {
+
+                    }
                 },
                 animation: {
-                    duration: 5000 // 5 sec. And to disable animation, we can set this field to 0
+                    duration: 5000, // 5 sec. And to disable animation, we can set this field to 0
+                    onComplete: function() {
+                        refbutton.disabled = false;
+                    }
                 },
                 scales: {
                     yAxes: [{
